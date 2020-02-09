@@ -1,8 +1,10 @@
 package wtf.retarders.clans;
 
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import wtf.retarders.clans.handler.HandlerManager;
+import wtf.retarders.clans.listener.PlayerListener;
 
 @Getter
 public class ClansPlugin extends JavaPlugin {
@@ -14,6 +16,8 @@ public class ClansPlugin extends JavaPlugin {
         // register handler manager
         this.handlerManager = new HandlerManager();
 
+        // register listeners
+        Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package wtf.retarders.clans.handler;
 
-import wtf.retarders.clans.clan.TeamHandler;
+import wtf.retarders.clans.clan.ClanHandler;
+import wtf.retarders.clans.handler.impl.GameHandler;
 import wtf.retarders.clans.profile.ProfileHandler;
 
 import java.util.ArrayList;
@@ -15,8 +16,9 @@ public class HandlerManager {
         this.handlers = new ArrayList<>();
 
         this.handlers.addAll(Arrays.asList(
-                new TeamHandler(),
-                new ProfileHandler()
+                new ClanHandler(),
+                new ProfileHandler(),
+                new GameHandler()
         ));
     }
 
@@ -24,14 +26,13 @@ public class HandlerManager {
      * Gets a handler instance by class
      *
      * @param handlerClass the class to find a handler instance with
-     * @param <T> the type of object of the returning handler
+     * @param <T>          the type of object of the returning handler
      * @return the handler
      */
     @SuppressWarnings("unchecked")
-    public <T> T findHandler(Class<? extends IHandler> handlerClass) {
+    public <T> T findHandler(Class<T> handlerClass) {
         return (T) this.handlers.stream()
                 .filter(handler -> handler.getClass().equals(handlerClass))
                 .findFirst().orElseThrow(() -> new IllegalArgumentException(handlerClass.getName() + " is not a registered handler."));
     }
-
 }

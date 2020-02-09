@@ -1,5 +1,6 @@
 package wtf.retarders.clans.clan;
 
+import lombok.Getter;
 import org.bukkit.ChatColor;
 import wtf.retarders.clans.clan.types.PlayerClan;
 import wtf.retarders.clans.handler.IHandler;
@@ -8,11 +9,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class TeamHandler implements IHandler {
+@Getter
+public class ClanHandler implements IHandler {
 
     private List<IClan> clans;
 
-    public TeamHandler() {
+    public ClanHandler() {
         this.clans = new ArrayList<>();
 
         // add default clans
