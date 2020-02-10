@@ -1,6 +1,7 @@
 package wtf.retarders.clans.handler;
 
 import wtf.retarders.clans.clan.ClanHandler;
+import wtf.retarders.clans.clan.claim.ClaimHandler;
 import wtf.retarders.clans.handler.impl.GameHandler;
 import wtf.retarders.clans.loadout.ItemLoadoutHandler;
 import wtf.retarders.clans.profile.ProfileHandler;
@@ -20,7 +21,8 @@ public class HandlerManager {
                 new ClanHandler(),
                 new ProfileHandler(),
                 new GameHandler(),
-                new ItemLoadoutHandler()
+                new ItemLoadoutHandler(),
+                new ClaimHandler()
         ));
     }
 

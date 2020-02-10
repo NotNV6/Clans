@@ -3,8 +3,11 @@ package wtf.retarders.clans;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import wtf.retarders.clans.clan.claim.ClaimListeners;
 import wtf.retarders.clans.handler.HandlerManager;
 import wtf.retarders.clans.listener.PlayerListener;
+
+import java.util.Arrays;
 
 @Getter
 public class ClansPlugin extends JavaPlugin {
@@ -17,7 +20,7 @@ public class ClansPlugin extends JavaPlugin {
         this.handlerManager = new HandlerManager();
 
         // register listeners
-        Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
+        Arrays.asList(new PlayerListener(), new ClaimListeners()).forEach(listener -> Bukkit.getPluginManager().registerEvents(listener, this));
     }
 
     @Override

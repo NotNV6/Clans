@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.ChatColor;
 import wtf.retarders.clans.clan.IClan;
+import wtf.retarders.clans.clan.claim.Claim;
 import wtf.retarders.clans.profile.Profile;
 
 import java.util.HashSet;
@@ -15,6 +16,7 @@ public class PlayerClan implements IClan {
 
     private String clanName;
     private ChatColor displayColor;
+    private Claim claim;
 
     private Set<Profile> members;
 
@@ -36,6 +38,7 @@ public class PlayerClan implements IClan {
         profile.setCurrentClan(null);
     }
 
+    public boolean isRaidable() { return this.dtr < 0.0D; }
     public String getDisplayName() {
         return this.displayColor + clanName;
     }

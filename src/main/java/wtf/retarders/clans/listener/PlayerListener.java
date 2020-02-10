@@ -16,8 +16,8 @@ import wtf.retarders.clans.profile.ProfileHandler;
 
 public class PlayerListener implements Listener {
 
-    private ProfileHandler profileHandler = ClansPlugin.getPlugin().getHandlerManager().findHandler(ProfileHandler.class);
     private GameHandler gameHandler = ClansPlugin.getPlugin().getHandlerManager().findHandler(GameHandler.class);
+    private ProfileHandler profileHandler = gameHandler.getProfileHandler();
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
