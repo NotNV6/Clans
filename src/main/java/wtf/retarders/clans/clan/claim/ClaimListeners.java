@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import wtf.retarders.clans.ClansConstants;
 import wtf.retarders.clans.ClansPlugin;
-import wtf.retarders.clans.handler.impl.GameHandler;
+import wtf.retarders.clans.game.GameHandler;
 import wtf.retarders.clans.profile.Profile;
 import wtf.retarders.clans.profile.ProfileHandler;
 

@@ -30,5 +30,4 @@ public class ClansConstants {
             Material.QUARTZ_ORE,
             Material.FENCE_GATE
     );
-
 }

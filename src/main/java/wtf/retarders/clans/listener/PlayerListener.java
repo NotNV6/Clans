@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import wtf.retarders.clans.ClansConstants;
 import wtf.retarders.clans.ClansPlugin;
-import wtf.retarders.clans.handler.impl.GameHandler;
+import wtf.retarders.clans.game.GameHandler;
 import wtf.retarders.clans.loadout.impl.LobbyLoadout;
 import wtf.retarders.clans.profile.Profile;
 import wtf.retarders.clans.profile.ProfileHandler;
