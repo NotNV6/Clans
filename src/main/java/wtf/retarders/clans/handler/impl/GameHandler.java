@@ -21,6 +21,11 @@ public class GameHandler implements IHandler {
 
     public void startGame() {
 
+        if(this.task != null) {
+            // cancel task if it already existed
+            this.task.cancel();
+        }
+
         this.task = new BukkitRunnable() {
             int countdown = 60;
 
@@ -55,6 +60,7 @@ public class GameHandler implements IHandler {
             }
         };
 
+        // actually run the task
         this.task.runTaskTimerAsynchronously(ClansPlugin.getPlugin(), 20L, 20L);
     }
 }

@@ -26,7 +26,7 @@ public class PlayerListener implements Listener {
         // set player's loadout
         profile.setLoadout(new LobbyLoadout());
 
-        if(Bukkit.getOnlinePlayers().size() == ClansConstants.MIN_PLAYERS_PER_CLAN*4) {
+        if (Bukkit.getOnlinePlayers().size() == ClansConstants.MIN_PLAYERS_PER_CLAN * 4) {
             gameHandler.startGame();
         }
     }
@@ -36,11 +36,12 @@ public class PlayerListener implements Listener {
         Player player = event.getPlayer();
         Profile profile = profileHandler.findProfile(player.getUniqueId());
 
-        if(profile != null) {
+        if (profile != null) {
             profile.unload();
         }
 
-        if(Bukkit.getOnlinePlayers().size() < ClansConstants.MIN_PLAYERS_PER_CLAN*4) {
+        if (Bukkit.getOnlinePlayers().size() < ClansConstants.MIN_PLAYERS_PER_CLAN * 4 && this.gameHandler.getTask() != null) {
+            // cancel the active task
             gameHandler.getTask().cancel();
         }
     }
