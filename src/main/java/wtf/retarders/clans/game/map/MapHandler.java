@@ -29,6 +29,7 @@ public class MapHandler implements IHandler {
         ConfigHandler configHandler = ClansPlugin.getPlugin().getHandlerManager().findHandler(ConfigHandler.class);
 
         Config config = configHandler.createConfig("maps.yml");
+        // loop through all maps
         config.getConfig().getConfigurationSection("map").getKeys(false).forEach(key -> {
             String pathName = "map." + key + '.';
 
@@ -36,9 +37,10 @@ public class MapHandler implements IHandler {
             int maxPlayers = config.getInt(pathName + "maxPlayersPerTeam");
             List<SpawnLocation> spawnLocations = new ArrayList<>();
 
+            // load all spawn points
             ConfigurationSection configurationSection = config.getConfig().getConfigurationSection(pathName + "locations");
             configurationSection.getKeys(false).forEach(key2 -> {
-                String pathName2 = pathName+"locations." + key2 + '.';
+                String pathName2 = pathName + "locations." + key2 + '.';
 
                 int x = config.getInt(pathName2 + 'x');
                 int y = config.getInt(pathName2 + 'y');
