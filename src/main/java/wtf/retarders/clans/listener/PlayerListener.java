@@ -4,14 +4,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import wtf.retarders.clans.ClansConstants;
 import wtf.retarders.clans.ClansPlugin;
 import wtf.retarders.clans.handler.impl.GameHandler;
+import wtf.retarders.clans.loadout.impl.LobbyLoadout;
 import wtf.retarders.clans.profile.Profile;
 import wtf.retarders.clans.profile.ProfileHandler;
-import wtf.retarders.clans.util.item.loadout.impl.LobbyLoadout;
 
 public class PlayerListener implements Listener {
 
@@ -24,7 +25,7 @@ public class PlayerListener implements Listener {
         Profile profile = new Profile(player.getUniqueId());
 
         // set player's loadout
-        profile.setLoadout(new LobbyLoadout());
+        profile.setLoadout(LobbyLoadout.class);
 
         if (Bukkit.getOnlinePlayers().size() == ClansConstants.MIN_PLAYERS_PER_CLAN * 4) {
             gameHandler.startGame();
@@ -41,8 +42,18 @@ public class PlayerListener implements Listener {
         }
 
         if (Bukkit.getOnlinePlayers().size() < ClansConstants.MIN_PLAYERS_PER_CLAN * 4 && this.gameHandler.getTask() != null) {
-            // cancel the active task
+            // cancel the active game start task
             gameHandler.getTask().cancel();
+        }
+    }
+
+    @EventHandler
+    public void onDeath(PlayerDeathEvent event) {
+        if (event.getEntity().getKiller() != null) {
+            Player player = event.getEntity();
+            Player killer = player.getKiller();
+
+            gameHandler.handleDeath(killer, player);
         }
     }
 }

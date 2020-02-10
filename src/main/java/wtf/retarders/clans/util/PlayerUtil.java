@@ -16,5 +16,4 @@ public class PlayerUtil {
         player.getInventory().setArmorContents(null);
         player.getActivePotionEffects().forEach(potion -> player.removePotionEffect(potion.getType()));
     }
-
 }

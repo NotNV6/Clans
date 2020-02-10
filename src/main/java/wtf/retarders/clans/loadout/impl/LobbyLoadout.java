@@ -1,4 +1,4 @@
-package wtf.retarders.clans.util.item.loadout.impl;
+package wtf.retarders.clans.loadout.impl;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -7,9 +7,9 @@ import wtf.retarders.clans.ClansConstants;
 import wtf.retarders.clans.ClansPlugin;
 import wtf.retarders.clans.clan.ClanHandler;
 import wtf.retarders.clans.clan.types.PlayerClan;
+import wtf.retarders.clans.loadout.ItemLoadout;
 import wtf.retarders.clans.profile.ProfileHandler;
 import wtf.retarders.clans.util.item.ItemBuilder;
-import wtf.retarders.clans.util.item.loadout.ItemLoadout;
 
 import java.util.function.Consumer;
 

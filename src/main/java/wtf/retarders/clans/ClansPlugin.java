@@ -22,7 +22,7 @@ public class ClansPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        Bukkit.getOnlinePlayers().forEach(player -> player.kickPlayer("The server is restarting..."));
     }
 
     public static ClansPlugin getPlugin() {

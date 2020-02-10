@@ -28,10 +28,12 @@ public class PlayerClan implements IClan {
 
     public void addPlayer(Profile profile) {
         this.members.add(profile);
+        profile.setCurrentClan(this);
     }
 
     public void removePlayer(Profile profile) {
         this.members.remove(profile);
+        profile.setCurrentClan(null);
     }
 
     public String getDisplayName() {

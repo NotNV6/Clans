@@ -2,6 +2,7 @@ package wtf.retarders.clans.handler;
 
 import wtf.retarders.clans.clan.ClanHandler;
 import wtf.retarders.clans.handler.impl.GameHandler;
+import wtf.retarders.clans.loadout.ItemLoadoutHandler;
 import wtf.retarders.clans.profile.ProfileHandler;
 
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ public class HandlerManager {
         this.handlers.addAll(Arrays.asList(
                 new ClanHandler(),
                 new ProfileHandler(),
-                new GameHandler()
+                new GameHandler(),
+                new ItemLoadoutHandler()
         ));
     }
 

@@ -13,8 +13,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import rip.skyland.kitpvp.KitPvP;
-import rip.skyland.kitpvp.util.CC;
+import wtf.retarders.clans.ClansPlugin;
+import wtf.retarders.clans.util.CC;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -184,7 +184,7 @@ public class ItemBuilder {
                         event.setCancelled(true);
                     }
                 }
-            }, KitPvP.getPlugin());
+            }, ClansPlugin.getPlugin());
         }
 
         return this;

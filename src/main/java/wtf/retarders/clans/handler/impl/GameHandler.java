@@ -2,12 +2,14 @@ package wtf.retarders.clans.handler.impl;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import wtf.retarders.clans.ClansConstants;
 import wtf.retarders.clans.ClansPlugin;
 import wtf.retarders.clans.clan.ClanHandler;
 import wtf.retarders.clans.clan.types.PlayerClan;
 import wtf.retarders.clans.handler.IHandler;
+import wtf.retarders.clans.profile.Profile;
 import wtf.retarders.clans.profile.ProfileHandler;
 
 import java.util.List;
@@ -19,9 +21,11 @@ public class GameHandler implements IHandler {
 
     private BukkitRunnable task;
 
-    public void startGame() {
+    private ClanHandler clanHandler = ClansPlugin.getPlugin().getHandlerManager().findHandler(ClanHandler.class);
+    private ProfileHandler profileHandler = ClansPlugin.getPlugin().getHandlerManager().findHandler(ProfileHandler.class);
 
-        if(this.task != null) {
+    public void startGame() {
+        if (this.task != null) {
             // cancel task if it already existed
             this.task.cancel();
         }
@@ -35,8 +39,6 @@ public class GameHandler implements IHandler {
                 if (countdown > 0 && (countdown < 6 || countdown == 10 || countdown == 30 || countdown == 45 || countdown == 60)) {
                     Bukkit.broadcastMessage(ClansConstants.GAME_STARTING.replace("%time%", countdown + ""));
                 } else if (countdown == 0) {
-                    ClanHandler clanHandler = ClansPlugin.getPlugin().getHandlerManager().findHandler(ClanHandler.class);
-                    ProfileHandler profileHandler = ClansPlugin.getPlugin().getHandlerManager().findHandler(ProfileHandler.class);
 
                     List<PlayerClan> playerClans = clanHandler.getClans().stream().filter(clan -> clan instanceof PlayerClan).map(clan -> (PlayerClan) clan).collect(Collectors.toList());
 
@@ -62,5 +64,13 @@ public class GameHandler implements IHandler {
 
         // actually run the task
         this.task.runTaskTimerAsynchronously(ClansPlugin.getPlugin(), 20L, 20L);
+    }
+
+    public void handleDeath(Player killer, Player died) {
+        Profile diedProfile = this.profileHandler.findProfile(died.getUniqueId());
+        PlayerClan clan = diedProfile.getCurrentClan();
+
+        // reduce dtr
+        clan.setDtr(clan.getDtr() - ClansConstants.DTR_REDUCE);
     }
 }

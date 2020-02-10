@@ -1,4 +1,4 @@
-package wtf.retarders.clans.util.item.loadout;
+package wtf.retarders.clans.loadout;
 
 import org.bukkit.inventory.ItemStack;
 

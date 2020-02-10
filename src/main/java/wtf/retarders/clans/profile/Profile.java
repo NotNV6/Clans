@@ -5,8 +5,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import wtf.retarders.clans.ClansPlugin;
 import wtf.retarders.clans.clan.types.PlayerClan;
+import wtf.retarders.clans.loadout.ItemLoadoutHandler;
 import wtf.retarders.clans.util.PlayerUtil;
-import wtf.retarders.clans.util.item.loadout.ItemLoadout;
+import wtf.retarders.clans.loadout.ItemLoadout;
 
 import java.util.UUID;
 
@@ -34,8 +35,9 @@ public class Profile {
         this.profileHandler.getProfiles().remove(this);
     }
 
-    public void setLoadout(ItemLoadout loadout) {
+    public void setLoadout(Class<? extends ItemLoadout> loadoutClass) {
         Player player = Bukkit.getPlayer(uuid);
+        ItemLoadout loadout = ClansPlugin.getPlugin().getHandlerManager().findHandler(ItemLoadoutHandler.class).findLoadout(loadoutClass);
 
         // clear inventory
         PlayerUtil.reset(player);

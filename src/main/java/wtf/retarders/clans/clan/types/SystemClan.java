@@ -1,4 +1,4 @@
 package wtf.retarders.clans.clan.types;
 
-public class TeamClan {
+public class SystemClan {
 }
