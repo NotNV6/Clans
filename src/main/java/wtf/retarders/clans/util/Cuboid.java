@@ -23,9 +23,9 @@ public class Cuboid {
         this.maxY = Math.max(location1.getBlockX(), location2.getBlockX());
         this.maxZ = Math.max(location1.getBlockX(), location2.getBlockX());
 
-        this.minX = Math.max(location1.getBlockX(), location2.getBlockX());
-        this.minY = Math.max(location1.getBlockX(), location2.getBlockX());
-        this.minZ = Math.max(location1.getBlockX(), location2.getBlockX());
+        this.minX = Math.min(location1.getBlockX(), location2.getBlockX());
+        this.minY = Math.min(location1.getBlockX(), location2.getBlockX());
+        this.minZ = Math.min(location1.getBlockX(), location2.getBlockX());
     }
 
     /**
